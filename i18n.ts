@@ -9,10 +9,17 @@ export const locales = ['zh'] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'zh';
 
-export default getRequestConfig(async ({ locale }) => {
-  if (!locales.includes(locale as Locale)) notFound();
+export default getRequestConfig(async ({ requestLocale }) => {
+  // next-intl 3.22+ 推荐用法：从 requestLocale 拿 locale，并显式返回
+  let locale = await requestLocale;
+
+  // 兜底：未识别或缺失时回落到默认
+  if (!locale || !locales.includes(locale as Locale)) {
+    locale = defaultLocale;
+  }
 
   return {
+    locale,
     messages: (await import(`./locales/${locale}.json`)).default,
   };
 });
