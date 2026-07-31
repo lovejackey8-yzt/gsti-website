@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   GSTI · ROOKLYN CITY Neon Global Styles
+   ============================================ */
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --scanline-opacity: 0.06;
+    --noise-opacity: 0.04;
+  }
+
+  html,
+  body {
+    background-color: #0a0f1a;
+    color: #e8ebf5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(123, 97, 255, 0.15) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 100%, rgba(255, 45, 135, 0.18) 0%, transparent 55%),
+      linear-gradient(180deg, #0a0f1a 0%, #0d0b1a 50%, #0a0f1a 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(255, 45, 135, 0.4);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* 霓虹文字光晕 · 用在标题、CTA */
+  .text-neon-pink {
+    color: #ff2d87;
+    text-shadow:
+      0 0 6px rgba(255, 45, 135, 0.85),
+      0 0 18px rgba(255, 45, 135, 0.55),
+      0 0 40px rgba(255, 45, 135, 0.25);
+  }
+
+  .text-neon-purple {
+    color: #9d86ff;
+    text-shadow:
+      0 0 6px rgba(123, 97, 255, 0.85),
+      0 0 18px rgba(123, 97, 255, 0.55);
+  }
+
+  .text-neon-cyan {
+    color: #00f5ff;
+    text-shadow:
+      0 0 6px rgba(0, 245, 255, 0.85),
+      0 0 18px rgba(0, 245, 255, 0.5);
+  }
+
+  .text-neon-yellow {
+    color: #ffd100;
+    text-shadow:
+      0 0 6px rgba(255, 209, 0, 0.85),
+      0 0 18px rgba(255, 209, 0, 0.4);
+  }
+
+  /* 档案面板 · 半透明毛玻璃 + 霓虹描边 */
+  .panel-file {
+    background: linear-gradient(
+      160deg,
+      rgba(26, 31, 46, 0.85) 0%,
+      rgba(15, 18, 30, 0.9) 100%
+    );
+    border: 1px solid rgba(255, 45, 135, 0.35);
+    box-shadow:
+      0 0 0 1px rgba(255, 45, 135, 0.08),
+      0 0 40px rgba(123, 97, 255, 0.15),
+      inset 0 0 60px rgba(123, 97, 255, 0.06);
+    backdrop-filter: blur(6px);
+  }
+
+  /* 终端字体感 · 用在数据、编号 */
+  .font-terminal {
+    font-family: var(--font-orbitron), 'Courier New', monospace;
+    letter-spacing: 0.08em;
+  }
+
+  /* 大写英文字体 · Bebas / 主标题 */
+  .font-display {
+    font-family: var(--font-bebas), sans-serif;
+    letter-spacing: 0.04em;
+  }
+}
+
+@layer utilities {
+  /* CRT 扫描线 · 全站覆盖层 */
+  .scanlines::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, var(--scanline-opacity)) 3px,
+      transparent 4px
+    );
+    z-index: 60;
+    mix-blend-mode: overlay;
+  }
+
+  /* 数据条流光 */
+  .data-bar {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .data-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.35),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: sweep 2.5s ease-in-out infinite;
+  }
+
+  @keyframes sweep {
+    0%, 60% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* 隐藏滚动条但保留滚动 */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

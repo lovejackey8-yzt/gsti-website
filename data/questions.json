@@ -1,0 +1,158 @@
+[
+  {
+    "id": 1,
+    "caseNumber": "001",
+    "location": "questions.q1.location",
+    "time": "02:13 AM",
+    "i18nKey": "q1",
+    "choices": [
+      { "key": "A", "label": "questions.q1.a", "trait": "impulse" },
+      { "key": "B", "label": "questions.q1.b", "trait": "calculated" },
+      { "key": "C", "label": "questions.q1.c", "trait": "pack" },
+      { "key": "D", "label": "questions.q1.d", "trait": "lone" }
+    ]
+  },
+  {
+    "id": 2,
+    "caseNumber": "002",
+    "location": "questions.q2.location",
+    "time": "11:47 PM",
+    "i18nKey": "q2",
+    "choices": [
+      { "key": "A", "label": "questions.q2.a", "trait": "rogue" },
+      { "key": "B", "label": "questions.q2.b", "trait": "principled" },
+      { "key": "C", "label": "questions.q2.c", "trait": "highrisk" },
+      { "key": "D", "label": "questions.q2.d", "trait": "safe" }
+    ]
+  },
+  {
+    "id": 3,
+    "caseNumber": "003",
+    "location": "questions.q3.location",
+    "time": "01:05 AM",
+    "i18nKey": "q3",
+    "choices": [
+      { "key": "A", "label": "questions.q3.a", "trait": "impulse" },
+      { "key": "B", "label": "questions.q3.b", "trait": "calculated" },
+      { "key": "C", "label": "questions.q3.c", "trait": "rogue" },
+      { "key": "D", "label": "questions.q3.d", "trait": "principled" }
+    ]
+  },
+  {
+    "id": 4,
+    "caseNumber": "004",
+    "location": "questions.q4.location",
+    "time": "04:22 AM",
+    "i18nKey": "q4",
+    "choices": [
+      { "key": "A", "label": "questions.q4.a", "trait": "lone" },
+      { "key": "B", "label": "questions.q4.b", "trait": "pack" },
+      { "key": "C", "label": "questions.q4.c", "trait": "highrisk" },
+      { "key": "D", "label": "questions.q4.d", "trait": "safe" }
+    ]
+  },
+  {
+    "id": 5,
+    "caseNumber": "005",
+    "location": "questions.q5.location",
+    "time": "03:41 AM",
+    "i18nKey": "q5",
+    "choices": [
+      { "key": "A", "label": "questions.q5.a", "trait": "impulse" },
+      { "key": "B", "label": "questions.q5.b", "trait": "calculated" },
+      { "key": "C", "label": "questions.q5.c", "trait": "pack" },
+      { "key": "D", "label": "questions.q5.d", "trait": "lone" }
+    ]
+  },
+  {
+    "id": 6,
+    "caseNumber": "006",
+    "location": "questions.q6.location",
+    "time": "10:18 PM",
+    "i18nKey": "q6",
+    "choices": [
+      { "key": "A", "label": "questions.q6.a", "trait": "rogue" },
+      { "key": "B", "label": "questions.q6.b", "trait": "principled" },
+      { "key": "C", "label": "questions.q6.c", "trait": "highrisk" },
+      { "key": "D", "label": "questions.q6.d", "trait": "safe" }
+    ]
+  },
+  {
+    "id": 7,
+    "caseNumber": "007",
+    "location": "questions.q7.location",
+    "time": "12:56 AM",
+    "i18nKey": "q7",
+    "choices": [
+      { "key": "A", "label": "questions.q7.a", "trait": "impulse" },
+      { "key": "B", "label": "questions.q7.b", "trait": "calculated" },
+      { "key": "C", "label": "questions.q7.c", "trait": "rogue" },
+      { "key": "D", "label": "questions.q7.d", "trait": "principled" }
+    ]
+  },
+  {
+    "id": 8,
+    "caseNumber": "008",
+    "location": "questions.q8.location",
+    "time": "02:34 AM",
+    "i18nKey": "q8",
+    "choices": [
+      { "key": "A", "label": "questions.q8.a", "trait": "lone" },
+      { "key": "B", "label": "questions.q8.b", "trait": "pack" },
+      { "key": "C", "label": "questions.q8.c", "trait": "highrisk" },
+      { "key": "D", "label": "questions.q8.d", "trait": "safe" }
+    ]
+  },
+  {
+    "id": 9,
+    "caseNumber": "009",
+    "location": "questions.q9.location",
+    "time": "03:00 AM",
+    "i18nKey": "q9",
+    "choices": [
+      { "key": "A", "label": "questions.q9.a", "trait": "lone" },
+      { "key": "B", "label": "questions.q9.b", "trait": "pack" },
+      { "key": "C", "label": "questions.q9.c", "trait": "calculated" },
+      { "key": "D", "label": "questions.q9.d", "trait": "impulse" }
+    ]
+  },
+  {
+    "id": 10,
+    "caseNumber": "010",
+    "location": "questions.q10.location",
+    "time": "09:11 PM",
+    "i18nKey": "q10",
+    "choices": [
+      { "key": "A", "label": "questions.q10.a", "trait": "rogue" },
+      { "key": "B", "label": "questions.q10.b", "trait": "principled" },
+      { "key": "C", "label": "questions.q10.c", "trait": "highrisk" },
+      { "key": "D", "label": "questions.q10.d", "trait": "safe" }
+    ]
+  },
+  {
+    "id": 11,
+    "caseNumber": "011",
+    "location": "questions.q11.location",
+    "time": "05:07 AM",
+    "i18nKey": "q11",
+    "choices": [
+      { "key": "A", "label": "questions.q11.a", "trait": "impulse" },
+      { "key": "B", "label": "questions.q11.b", "trait": "calculated" },
+      { "key": "C", "label": "questions.q11.c", "trait": "rogue" },
+      { "key": "D", "label": "questions.q11.d", "trait": "principled" }
+    ]
+  },
+  {
+    "id": 12,
+    "caseNumber": "012",
+    "location": "questions.q12.location",
+    "time": "11:29 PM",
+    "i18nKey": "q12",
+    "choices": [
+      { "key": "A", "label": "questions.q12.a", "trait": "lone" },
+      { "key": "B", "label": "questions.q12.b", "trait": "pack" },
+      { "key": "C", "label": "questions.q12.c", "trait": "highrisk" },
+      { "key": "D", "label": "questions.q12.d", "trait": "safe" }
+    ]
+  }
+]
