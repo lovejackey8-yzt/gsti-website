@@ -16,8 +16,27 @@ import { RadarChart } from '@/components/result/RadarChart';
 import { ShareBar } from '@/components/result/ShareBar';
 import { GlitchText } from '@/components/effects/GlitchText';
 import { cn } from '@/utils/cn';
+import personalitiesData from '@/data/personalities.json';
+import type { Personality } from '@/types/personality-record';
 
-export default function ResultClient() {
+const personalities = personalitiesData as Personality[];
+
+interface ResultClientProps {
+  /**
+   * 如果传入 personalityId，则强制展示该型（用于分享页/share/[id]）
+   * 不传则从 useTestStore 读答案自动计算（用于 /result 正常流程）
+   */
+  forcedPersonalityId?: number;
+  /**
+   * 是否是分享查看模式（隐藏"重新审讯"按钮，因为看别人档案不需要）
+   */
+  isShareView?: boolean;
+}
+
+export default function ResultClient({
+  forcedPersonalityId,
+  isShareView = false,
+}: ResultClientProps = {}) {
   const locale = useLocale();
   const router = useRouter();
   const t = useTranslations('result');
@@ -25,16 +44,44 @@ export default function ResultClient() {
   const hasHydrated = useTestStore((s) => s.hasHydrated);
   const reset = useTestStore((s) => s.reset);
 
-  const [url, setUrl] = useState('');
-  const [state, setState] = useState<'loading' | 'ok' | 'missing'>('loading');
-  const [resolved, setResolved] = useState<ReturnType<typeof resolvePersonality> | null>(null);
+  const [state, setState] = useState<'loading' | 'ok' | 'missing'>(
+    forcedPersonalityId ? 'ok' : 'loading',
+  );
+  const [resolved, setResolved] = useState<ReturnType<typeof resolvePersonality> | null>(
+    forcedPersonalityId
+      ? {
+          personality: personalities.find((p) => p.id === forcedPersonalityId) ?? personalities[0],
+          breakdown: {
+            action: { impulse: 0, calculated: 0 },
+            social: { lone: 0, pack: 0 },
+            moral: { rogue: 0, principled: 0 },
+            risk: { highrisk: 0, safe: 0 },
+          },
+          percent: {
+            action: { a: 50, b: 50 },
+            social: { a: 50, b: 50 },
+            moral: { a: 50, b: 50 },
+            risk: { a: 50, b: 50 },
+          },
+          code: (personalities.find((p) => p.id === forcedPersonalityId)?.code ?? '') as never,
+        }
+      : null,
+  );
 
+  // 分享 URL 用同一型的固定 share 链接（可分享给别人）
+  const personalityIdForShare = resolved?.personality.id ?? forcedPersonalityId;
+  const [origin, setOrigin] = useState('');
   useEffect(() => {
-    if (typeof window !== 'undefined') setUrl(window.location.href);
+    if (typeof window !== 'undefined') setOrigin(window.location.origin);
   }, []);
+  const shareUrl = useMemo(() => {
+    if (!origin || !personalityIdForShare) return '';
+    return `${origin}/${locale}/share/${personalityIdForShare}`;
+  }, [origin, locale, personalityIdForShare]);
 
-  // 只在 rehydrate 完成时判断一次
+  // 只在 rehydrate 完成时判断一次（分享模式跳过）
   useEffect(() => {
+    if (forcedPersonalityId) return;
     if (!hasHydrated) return;
     const answers = useTestStore.getState().answers;
     if (Object.keys(answers).length < 12) {
@@ -45,7 +92,7 @@ export default function ResultClient() {
     setResolved(resolvePersonality(answers));
     setState('ok');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasHydrated]);
+  }, [hasHydrated, forcedPersonalityId]);
 
   if (state !== 'ok' || !resolved) {
     return (
@@ -78,7 +125,7 @@ export default function ResultClient() {
         animate={{ opacity: 1 }}
         className="mb-3 text-center font-terminal text-[10px] uppercase tracking-[0.5em] text-neon-cyan/80 md:text-xs"
       >
-        // {t('kicker')}
+        // {isShareView ? 'DECLASSIFIED FILE · PUBLIC VIEW' : t('kicker')}
       </motion.p>
 
       <motion.section
@@ -112,7 +159,7 @@ export default function ResultClient() {
                 className="object-cover"
                 priority
               />
-              {/* 底部渐变遮罩 · 让 callsign 压得住 */}
+              {/* 底部渐变遮罩 · 让callsign 压得住 */}
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-night via-night/70 to-transparent" />
               {/* callsign 覆在肖像底部 */}
               <div className="absolute inset-x-0 bottom-0 p-3 text-center">
@@ -228,7 +275,7 @@ export default function ResultClient() {
             <ConfidentialStamp />
           </div>
 
-          <ShareBar shareCopy={shareCopy} url={url} />
+          <ShareBar shareCopy={shareCopy} url={shareUrl} />
         </div>
 
         {/* 底部行 · 预注册 CTA */}
@@ -250,19 +297,30 @@ export default function ResultClient() {
             </a>
 
             <div className="flex items-center gap-3">
-              <button
-                onClick={handleRetake}
-                className="inline-flex items-center gap-2 border border-white/20 bg-night-panel/60 px-4 py-2 font-terminal text-[10px] uppercase tracking-widest text-white/70 transition-all hover:border-neon-pink hover:text-neon-pink md:text-xs"
-              >
-                <RotateCcw className="h-3.5 w-3.5" />
-                {t('retake')}
-              </button>
+              {!isShareView && (
+                <button
+                  onClick={handleRetake}
+                  className="inline-flex items-center gap-2 border border-white/20 bg-night-panel/60 px-4 py-2 font-terminal text-[10px] uppercase tracking-widest text-white/70 transition-all hover:border-neon-pink hover:text-neon-pink md:text-xs"
+                >
+                  <RotateCcw className="h-3.5 w-3.5" />
+                  {t('retake')}
+                </button>
+              )}
+              {isShareView && (
+                <Link
+                  href={`/${locale}`}
+                  className="inline-flex items-center gap-2 border-2 border-neon-pink bg-neon-pink/10 px-4 py-2 font-terminal text-[10px] uppercase tracking-widest text-white transition-all hover:bg-neon-pink md:text-xs"
+                >
+                  <span>IDENTIFY YOURSELF</span>
+                  <span className="text-neon-yellow">→</span>
+                </Link>
+              )}
               <Link
                 href={`/${locale}/library`}
                 className="inline-flex items-center gap-2 border border-white/20 bg-night-panel/60 px-4 py-2 font-terminal text-[10px] uppercase tracking-widest text-white/70 transition-all hover:border-neon-cyan hover:text-neon-cyan md:text-xs"
               >
                 <Library className="h-3.5 w-3.5" />
-                {t('toLibrary')}
+                {t('viewLibrary')}
               </Link>
             </div>
           </div>
@@ -273,25 +331,20 @@ export default function ResultClient() {
 }
 
 function ConfidentialStamp() {
-  const t = useTranslations('result');
   return (
-    <div className="relative">
-      <div
-        className="rotate-[-8deg] border-2 border-neon-pink px-4 py-2 text-center font-terminal text-[10px] leading-tight tracking-widest text-neon-pink md:text-xs"
-        style={{
-          textShadow: '0 0 6px rgba(255,45,135,0.7)',
-          boxShadow: '0 0 12px rgba(255,45,135,0.35)',
-        }}
+    <div
+      className="pointer-events-none rotate-[-8deg] border-4 border-neon-pink px-4 py-1"
+      style={{ boxShadow: '0 0 24px rgba(255,45,135,0.6)' }}
+    >
+      <p
+        className="font-display text-xl tracking-[0.35em] text-neon-pink md:text-2xl"
+        style={{ textShadow: '0 0 8px rgba(255,45,135,0.9)' }}
       >
-        {t('confidential')
-          .split('\n')
-          .map((line, i) => (
-            <div key={i}>{line}</div>
-          ))}
-      </div>
-      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rotate-[-8deg] font-display text-lg italic text-neon-cyan/80">
+        CONFIDENTIAL
+      </p>
+      <p className="mt-0.5 text-center font-terminal text-[9px] uppercase tracking-widest text-neon-pink/70">
         ~ ROOKLYN CITY ~
-      </div>
+      </p>
     </div>
   );
 }
