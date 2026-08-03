@@ -32,6 +32,9 @@ yarn-error.log*
 # local data (admin analytics)
 /.data
 
+# local dev logs
+dev.log
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts.tmp
