@@ -1,0 +1,380 @@
+{
+  "topbar": {
+    "subtitle": "Criminal Personality Identification System",
+    "library": "16 File Archive"
+  },
+  "footer": {
+    "disclaimer": "Fictional game promo · No connection to real events or persons"
+  },
+  "landing": {
+    "kicker": "CITY DATABASE",
+    "title": "GSTI",
+    "subtitle": "CRIMINAL PERSONALITY IDENTIFICATION",
+    "tagline": "The City Knows Who You Are.",
+    "taglineCn": "Step in. Get identified. Get out.",
+    "cta": "IDENTIFY ME",
+    "ctaSub": "ENTER THE CITY",
+    "status": "SYSTEM STATUS",
+    "statusOnline": "CITY DATABASE ONLINE",
+    "featureTitle": "12 CHOICES / 4 DIMENSIONS / 16 IDENTITIES",
+    "featureDesc": "It's 2AM. You step into the city's underground terminal. It won't ask who you are — it will pull your file out of the shadows itself.",
+    "features": {
+      "immersive": { "title": "IMMERSIVE CASE FILES", "desc": "Every question is a real incident from the streets of ROOKLYN CITY." },
+      "unique": { "title": "16 IDENTITIES", "desc": "Derived from a 4-dimension behavior matrix. One label. Yours only." },
+      "share": { "title": "FILES CAN LEAK", "desc": "Generate your own dossier card. Let the whole city know where you stand." }
+    }
+  },
+  "test": {
+    "caseLabel": "CASE",
+    "location": "LOCATION",
+    "time": "TIME",
+    "progress": "RECORDING DECISION",
+    "prev": "PREVIOUS",
+    "next": "LOCK IN DECISION",
+    "finish": "LOCK IDENTITY",
+    "decisionRecorded": "DECISION LOGGED"
+  },
+  "analysis": {
+    "title": "IDENTIFICATION IN PROGRESS",
+    "subtitle": "Pulling your identity from the city's memory",
+    "steps": {
+      "step1": "Connecting to CITY DATABASE ...",
+      "step2": "Scanning 12 behavior decisions ...",
+      "step3": "Calculating Action / Social / Moral / Risk coefficients ...",
+      "step4": "Matching core file fingerprint ...",
+      "step5": "Identity confirmed."
+    }
+  },
+  "result": {
+    "kicker": "CITY DATABASE // IDENTIFICATION COMPLETE",
+    "fileNo": "FILE NO.",
+    "yourIdentity": "YOUR IDENTITY",
+    "threatLevel": "THREAT LEVEL",
+    "influence": "INFLUENCE",
+    "status": "STATUS",
+    "statusActive": "ACTIVE",
+    "profile": "PERSONALITY PROFILE",
+    "behavior": "BEHAVIOR ANALYSIS",
+    "radar": "BEHAVIOR MATRIX",
+    "shareTitle": "SHARE YOUR IDENTITY",
+    "shareDesc": "The file's ready. Now let the whole city know who you are.",
+    "shareCta": "LEAK MY FILE",
+    "shareCopy": "COPY LINK",
+    "shareDownload": "SAVE AS FILE",
+    "shareDownloadProcessing": "GENERATING FILE · STAND BY",
+    "shareDownloadDone": "FILE EXPORTED · CHECK DOWNLOADS",
+    "shareDownloadFailed": "EXPORT FAILED · TRY AGAIN",
+    "shareIgHint": "COPY READY · PASTE INTO INSTAGRAM",
+    "shareTtHint": "COPY READY · PASTE INTO TIKTOK",
+    "confidential": "CITY DATABASE\nCONFIDENTIAL",
+    "signature": "AUTHORIZED SIGNATURE",
+    "retake": "INTERROGATE AGAIN",
+    "toLibrary": "VIEW 16 FILES",
+    "downloadGame": "PRE-REGISTER · ENTER THE CITY",
+    "downloadGameSub": "Identity is only the start · The real city awaits",
+    "dimensions": {
+      "action": "ACTION STYLE",
+      "social": "SOCIAL STYLE",
+      "moral": "MORAL COMPASS",
+      "risk": "RISK APPETITE"
+    },
+    "traits": {
+      "impulse": "IMPULSE",
+      "calculated": "CALCULATED",
+      "lone": "LONE",
+      "pack": "PACK",
+      "rogue": "ROGUE",
+      "principled": "PRINCIPLED",
+      "highrisk": "HIGH-RISK",
+      "safe": "SAFE"
+    }
+  },
+  "library": {
+    "kicker": "CITY DATABASE // FILE ARCHIVE",
+    "title": "16 CRIMINAL FILES",
+    "subtitle": "Every identity registered in this city. You unlocked exactly one.",
+    "locked": "FILE SEALED",
+    "unlocked": "IDENTIFIED",
+    "code": "CODE",
+    "callsign": "CALLSIGN",
+    "threat": "THREAT",
+    "back": "BACK TO CITY",
+    "startTest": "IDENTIFY ME"
+  },
+  "questions": {
+    "q1": {
+      "location": "INDUSTRIAL DISTRICT / YOUR TURF",
+      "scenario": "Someone's pulling moves on your turf. You?",
+      "a": "Move in immediately. Find out who, why, and who the hell they think they are.",
+      "aSub": "Hit first. Let them remember whose block this is.",
+      "b": "Gather intel first: who, with whom, when, where. Then strike.",
+      "bSub": "Know the enemy before you draw the gun.",
+      "c": "Call the crew. This is our war — we ride together.",
+      "cSub": "The pack hits harder than the wolf.",
+      "d": "I handle it alone. Extra eyes just get in the way.",
+      "dSub": "One shadow. Zero witnesses."
+    },
+    "q2": {
+      "location": "HARBOR BAR / VIP BOOTH",
+      "scenario": "Someone offers you a deal that'll make you rich — but it means burying an old friend with dirty files.",
+      "a": "Screw the friendship. Winners never look back.",
+      "aSub": "Loyalty is the most expensive tax there is.",
+      "b": "Friendship's worth more. I don't climb over my own.",
+      "bSub": "Some lines don't have a price tag.",
+      "c": "I'm in! Push all the chips — this doesn't come twice.",
+      "cSub": "Bet everything. Take the crown.",
+      "d": "Too dirty. Too hot. I'm out.",
+      "dSub": "Money burns. Skin doesn't grow back."
+    },
+    "q3": {
+      "location": "UNDERGROUND GARAGE / SIT-DOWN ROOM",
+      "scenario": "Your partner just broke the main pact with our allies. You?",
+      "a": "I confront him face to face. This kind of move I cannot stand.",
+      "aSub": "Say it now. Say it loud.",
+      "b": "I collect the evidence first, work out the words, then talk.",
+      "bSub": "Own the cards before you sit at the table.",
+      "c": "Pacts don't matter. Only results do.",
+      "cSub": "Rules are paper. I move in blood.",
+      "d": "A pact is a pact. Order dies the day we break it.",
+      "dSub": "Rulebreakers pay. Every time."
+    },
+    "q4": {
+      "location": "SUBURBAN WAREHOUSE / DEEP NIGHT",
+      "scenario": "A big score just showed up — no prep, no cover, no guarantees.",
+      "a": "I go alone. My weight, my ride.",
+      "aSub": "One-man job. Nobody else takes the fall.",
+      "b": "No crew, no move. Together it's faster, cleaner.",
+      "bSub": "Roll deep. Roll fast.",
+      "c": "Of course I'm in! The bigger the risk, the bigger the payout.",
+      "cSub": "Others won't. I will.",
+      "d": "Pass. Chances come and go. Lives don't.",
+      "dSub": "Keep the head. Take the next one."
+    },
+    "q5": {
+      "location": "YOUR LOT / AFTER MIDNIGHT",
+      "scenario": "Someone's trying to jack your car.",
+      "a": "I grab the bat and walk over.",
+      "aSub": "Swing first. Talk later.",
+      "b": "Plan the takedown. Then move.",
+      "bSub": "Cold eyes. One strike.",
+      "c": "The crew closes in from three sides.",
+      "cSub": "Boxed in. Nowhere left to run.",
+      "d": "I slip up behind him. He never sees me coming.",
+      "dSub": "Silent approach. Solo cleanup."
+    },
+    "q6": {
+      "location": "DOCKS DROP-OFF / 22:18",
+      "scenario": "You brought a load of guns. The buyer turns out to be a cop.",
+      "a": "I take the whole load and vanish. Cash and cargo stay with me.",
+      "aSub": "Nobody signs my contracts.",
+      "b": "I stay. Hold the line. He paid for the goods — badge or not.",
+      "bSub": "Business is business. A deal's a deal.",
+      "c": "I go all in. Maybe the cop isn't what he looks like.",
+      "cSub": "Already burning. Roll the dice.",
+      "d": "I turn myself in quietly. Life beats everything.",
+      "dSub": "Know when to fold."
+    },
+    "q7": {
+      "location": "BOSS'S RESIDENCE / VAULT ROOM",
+      "scenario": "You stumble onto where the boss hides his cash. He doesn't know you know. A small skim, nobody notices.",
+      "a": "I take just enough to run a job of my own.",
+      "aSub": "Opportunity in hand. Move on it.",
+      "b": "I tell him — and hint that silence costs.",
+      "bSub": "Info is currency. Cash it in.",
+      "c": "I take it all. His fault for hiding it bad.",
+      "cSub": "Careless keepers deserve empty vaults.",
+      "d": "I don't touch a dime. That's family money. Never.",
+      "dSub": "Steal from your own, there's no way back."
+    },
+    "q8": {
+      "location": "UNDERGROUND CLUB / VAULT ROOM",
+      "scenario": "Someone pitches a job: hit a nightclub, walk out with the safe. Top-tier security — but killable. Massive risk.",
+      "a": "I go alone. If I burn, nobody rats.",
+      "aSub": "Solo run. Full share. No leaks.",
+      "b": "I bring two: one on cameras, one on alarms, I take the safe.",
+      "bSub": "Three-man crew. Clean roles. Clean exit.",
+      "c": "Hell yes. Even if the system stays on, I grab what I can.",
+      "cSub": "Go. Worst case, you die.",
+      "d": "Didn't hear that. I don't need this heat.",
+      "dSub": "Let the others burn. I'll watch."
+    },
+    "q9": {
+      "location": "DROP-OFF CHANGED / UNKNOWN BLOCK",
+      "scenario": "3AM. You have to deliver a briefcase of cash. Two hours out, the address changes.",
+      "a": "I drive alone. Pack the piece — just in case.",
+      "aSub": "Solo drive. Safety off.",
+      "b": "I bring backup. Could be a trap.",
+      "bSub": "Crew on standby. Play or pull out.",
+      "c": "I scout the place first. Plan the exit before I show up.",
+      "cSub": "Intel first. Move second.",
+      "d": "Address changed, address delivered. Job's a job. Rolling.",
+      "dSub": "Clients change plans. So what."
+    },
+    "q10": {
+      "location": "PRIVATE LOUNGE / DEEP NIGHT",
+      "scenario": "An old enemy walks in. He offers a deal: he gives up his own crew, you give him a new name and a ticket out.",
+      "a": "I laugh in his face and throw him out.",
+      "aSub": "Snitches don't get deals from me.",
+      "b": "I hear him out — no ticket. I hand him to the cops. Clean.",
+      "bSub": "Let the law close it.",
+      "c": "I say yes. Take his crew. Then close him out for good.",
+      "cSub": "Use him. Then bury him.",
+      "d": "I help him — but I want ironclad guarantees for me first.",
+      "dSub": "Cover myself. Then think about him."
+    },
+    "q11": {
+      "location": "EXIT ROUTE / 05:07 AM",
+      "scenario": "You're pulling out with your boy. He starts stalling. Shaking. Refusing to move.",
+      "a": "I grab him by the collar and drag him out. We move. My call.",
+      "aSub": "No time for a heart-to-heart.",
+      "b": "I tell him cold: leave now, or in three minutes none of us leave.",
+      "bSub": "Facts. Numbers. Move.",
+      "c": "Sit there till sunrise if you want. I'm gone. Sell me out, I'll find you.",
+      "cSub": "His choice. Not my problem.",
+      "d": "I don't leave him. If he's scared, I stay. We go together or not at all.",
+      "dSub": "Brothers don't get left behind."
+    },
+    "q12": {
+      "location": "PARTNER'S CAR / ROUTINE SWEEP",
+      "scenario": "You find a bug in your partner's car. He doesn't know it's there.",
+      "a": "I quietly pull the bug. Never tell him. If someone's listening, I'll be the sharpest one now.",
+      "aSub": "I know. That's enough.",
+      "b": "I warn the whole crew. Every car gets swept. Tonight.",
+      "bSub": "Share the intel. Protect the pack.",
+      "c": "I leave it in. Feed the enemy false leads. Watch them chew.",
+      "cSub": "Since they're listening — poison the signal.",
+      "d": "I report it up the chain. Follow orders. Protect everyone.",
+      "dSub": "Play by the book. Nobody burns."
+    }
+  },
+  "personalities": {
+    "p1": {
+      "name": "THE GODFATHER",
+      "callsignLabel": "GHOST-K",
+      "shortDesc": "Never in the spotlight. Always deciding who stands in it.",
+      "profile": "A godfather figure operating entirely from behind the curtain. Pulls every string. Never dirties his hands. Sits in the dark, controls every artery of the city — his influence absolute, invisible. Observes from the sidelines, moves through proxies, plans meticulously, avoids direct confrontation unless there is no other choice. Real kings don't have to swing.",
+      "shareCopy": "I'm THE GODFATHER 🕶️ Never in the spotlight. I decide who stands in it. Real winners never lift a finger. What's your GSTI identity?",
+      "inviteCopy": "This guy thinks he's got everyone figured out 😂 A real Godfather doesn't announce himself. Take the GSTI test — see what the city picked for you 👇"
+    },
+    "p2": {
+      "name": "THE CHESS MASTER",
+      "callsignLabel": "MIND-07",
+      "shortDesc": "You're still planning move one. I'm already on move seven.",
+      "profile": "A genius who reads life as a chessboard. Sees the endgame before others touch a pawn. Thinks alone, moves alone, never accepts an answer he hasn't verified himself. Rules are just squares on the board — what decides victory is being several moves ahead. Always.",
+      "shareCopy": "I'm THE CHESS MASTER ♟️ You're still thinking move one. I've already played move seven. This game isn't speed — it's distance. What's your GSTI identity?",
+      "inviteCopy": "This guy thinks he plays 4D chess 😂 Bro you can't even find your own piece on the board. Take GSTI — see if you're a player or a pawn 👇"
+    },
+    "p3": {
+      "name": "THE KINGPIN",
+      "callsignLabel": "KING-B",
+      "shortDesc": "On my block, there's one rule — I say so.",
+      "profile": "Rose from the streets to become the undisputed ruler of his block. Every move calculated. Every rule non-negotiable. His crew follows him — not from fear, but from certainty: as long as he stands, this block does not fall.",
+      "shareCopy": "I'm THE KINGPIN 👑 On my block, the rulebook has one line — mine. Not every city has a king. This block does. What's your GSTI identity?",
+      "inviteCopy": "This guy swears he runs the whole street 😂 Bro your authority ends at your own cat. Take GSTI — see how much turf the city gives you 👇"
+    },
+    "p4": {
+      "name": "THE DEALMAKER",
+      "callsignLabel": "DEAL-Z",
+      "shortDesc": "I don't lie. I just leave one answer standing.",
+      "profile": "A born dealmaker — not a hustler, a real merchant. Always brings an offer nobody can refuse. Others play the market. He writes the market. Others fight for the cut. He makes sure the crew wins together. The moment he opens his mouth, the deal is already half closed.",
+      "shareCopy": "I'm THE DEALMAKER 💼 I don't lie. I just make sure every choice has one answer left. Deals aren't sold — they're engineered. What's your GSTI identity?",
+      "inviteCopy": "This guy claims he's a negotiation god 😂 Bro your last haggle ended with you tipping the seller. Take GSTI — hustler or merchant? 👇"
+    },
+    "p5": {
+      "name": "THE MECHANIC",
+      "callsignLabel": "NITRO-9",
+      "shortDesc": "The engine is my language. The exhaust is my statement.",
+      "profile": "Legend of the underground tuning scene. Two minutes flat to steal any car in the city. When others brake, she guns it. When others follow the manual, she trusts her hands. Silent, alone in her garage with an engine — the only voice she trusts. Rules are scrap paper. But no matter how ugly the run gets, she gets the engine roaring again. Every crew's most reliable wrench.",
+      "shareCopy": "I'm THE MECHANIC 🏎️ The engine is my language. The exhaust is my statement. Your car isn't being driven — it's just been borrowed. You just don't know yet. What's your GSTI identity?",
+      "inviteCopy": "This guy calls himself a street racer 😂 Bro your rental bike wobbles three times over a speed bump. Take GSTI — find your real ride 👇"
+    },
+    "p6": {
+      "name": "THE SNIPER",
+      "callsignLabel": "SILENCER",
+      "shortDesc": "One shot. Everything else is noise.",
+      "profile": "An artist in the shadows. A silent sniper and scout. Before every trigger pull, she's already run a thousand outcomes. Works alone. Follows nobody's orders. In the most dangerous moment, she bets everything on one precise shot.",
+      "shareCopy": "I'm THE SNIPER 🎯 One shot is enough. Everything else is noise. I leave no trace. Only results. What's your GSTI identity?",
+      "inviteCopy": "This guy said he wants to be an invisible boss 😂 Bro you got found in three seconds during hide and seek. Take GSTI — see if you can actually hide 👇"
+    },
+    "p7": {
+      "name": "THE STREET LUNATIC",
+      "callsignLabel": "TURBO-X",
+      "shortDesc": "Red lights? Those are somebody else's rules.",
+      "profile": "The city's madman. Stunt driver, street racer, no brakes. Only the gas pedal. Treats the whole city as his track. Every acceleration is a bet. Every jump is a life on the line. Rules never held him back — but no matter how fast he goes, he waits for his crew at the finish line.",
+      "shareCopy": "I'm THE STREET LUNATIC 🔥 Red light? That's somebody else's rule. Gas to the floor. Brakes are for regret. What's your GSTI identity?",
+      "inviteCopy": "This guy thinks he's wild 😂 Bro you ran one yellow light and had panic attacks for three days. Take GSTI — we'll give you some adrenaline 👇"
+    },
+    "p8": {
+      "name": "THE JOKER",
+      "callsignLabel": "JOKER-11",
+      "shortDesc": "You think I'm joking? The main show already ended.",
+      "profile": "A born performer. Uses dazzling, improvised chaos as a distraction — buying his crew the window they need. Acts on instinct. Loyal to the family he chose, not the one he was born into. Follows his own code even when the law disagrees. In the wildest chaos, he stays calm and rock-solid.",
+      "shareCopy": "I'm THE JOKER 🤡 You think I'm the joke? By the time you get it, the real show already ended while you were laughing. What's your GSTI identity?",
+      "inviteCopy": "This guy calls himself the life of the party 😂 The real move never happens in the spotlight. Take GSTI — see if you're chaos incarnate 👇"
+    },
+    "p9": {
+      "name": "THE CLEANER",
+      "callsignLabel": "CLEAN-01",
+      "shortDesc": "My justice doesn't need a jury.",
+      "profile": "Operates outside the law as a lone enforcer. Follows an unshakeable personal code. His past is buried in fog, but his actions leave one message: he was born to enforce his own justice. Never hesitates when the moment comes. Doesn't need a crew, doesn't need orders — only his own principles. The calmer he stays, the deadlier he becomes.",
+      "shareCopy": "I'm THE CLEANER 🧹 My justice doesn't need a jury. Nobody knows I was there — they just know the problem is gone. What's your GSTI identity?",
+      "inviteCopy": "This guy talks about his moral code every day 😂 Bro your moral code stretches like a rubber band. Take GSTI — find your inner justice 👇"
+    },
+    "p10": {
+      "name": "THE NEGOTIATOR",
+      "callsignLabel": "ENVOY-M",
+      "shortDesc": "War is too loud. I make sure both sides think they won.",
+      "profile": "Once a high-stakes negotiator inside a powerful corporation — until she saw through the whole rotten system. Took her skills into the city's underworld and became the silent architect deciding the fate of countless crews. Prefers negotiation and strategic alliances over violence. Every move is calculated. Every bet is placed on her people winning together with her — never against her code.",
+      "shareCopy": "I'm THE NEGOTIATOR 🤝 War is too loud. I let both sides think they won — then they realize they signed my contract. What's your GSTI identity?",
+      "inviteCopy": "This guy calls himself a social genius 😂 Bro your entire social circle is one group chat. Take GSTI — see who's actually running the room 👇"
+    },
+    "p11": {
+      "name": "THE BOMB EXPERT",
+      "callsignLabel": "FUSE-13",
+      "shortDesc": "I only blow up what needs to blow. Whether it does — ask me after I cut this wire.",
+      "profile": "A silent demolitions specialist. Changes the plan at the last second — hands his fate to his instinct. Always works alone. Trusts only his own judgment. Never lets an innocent become collateral. Every wire cut is a bet against time and death itself.",
+      "shareCopy": "I'm THE BOMB EXPERT 💣 I only blow up what needs to blow. Whether it does — I'll tell you after I cut this wire. What's your GSTI identity?",
+      "inviteCopy": "This guy says his instincts are sharp 😂 Bro you lost five rounds of rock-paper-scissors in a row. Do NOT touch that wire. Take GSTI 👇"
+    },
+    "p12": {
+      "name": "THE FIXER",
+      "callsignLabel": "FIXER-V",
+      "shortDesc": "The rules? I wrote them. The punishment? I deliver it.",
+      "profile": "Former enforcer. Famous for his cold, calculating hand. Lives by his own prison code. Loyal only to the people he considers his own — outsiders get no mercy. Recognizes no authority but himself. Thrives in calculated risk. Always counting cost vs. reward. Fiercely protects his inner circle. Loves the game.",
+      "shareCopy": "I'm THE FIXER ⚖️ 'Can't be done' isn't in my vocabulary. 'You sure you want this?' is. I set the rules. I deliver the sentence. What's your GSTI identity?",
+      "inviteCopy": "This guy thinks he's decisive 😂 Bro the biggest problem you ever fixed was 'my delivery went cold'. Take GSTI — see if you qualify to enforce 👇"
+    },
+    "p13": {
+      "name": "THE SCALPEL",
+      "callsignLabel": "SCALPEL",
+      "shortDesc": "Where to cut. How deep. Whether it scars. My call.",
+      "profile": "The crew's surgeon. Handles traitors with cold, clinical precision — cutting them out like diseased tissue to keep the organization she serves healthy. Plans obsessively before every move. Works alone. Follows her own strict protocol. Willing to take real risk to close a case.",
+      "shareCopy": "I'm THE SCALPEL 🔪 Where to cut. How deep. Whether it scars — my call. I'm not cold. I just have no patience for rotten tissue. What's your GSTI identity?",
+      "inviteCopy": "This guy claims he reads people like a book 😂 Bro you can't even tell when your coworker is lying to your face. Take GSTI — get dissected 👇"
+    },
+    "p14": {
+      "name": "THE SCAVENGER",
+      "callsignLabel": "RUSH-X",
+      "shortDesc": "When the smoke clears — that's when I show up.",
+      "profile": "A lone scavenger walking the aftermath of every battlefield. Strips every valuable thing off the bodies. Prefers solitude and silence. Despite the loner streak, everyone who's ever met him leaves afraid. Moves alone. Takes calculated risk. Observes and analyzes before he acts — but his impulses can still make him dangerously unpredictable.",
+      "shareCopy": "I'm THE SCAVENGER 🦴 When the smoke clears — that's when I arrive. What you fought over, killed for, died over — the rest belongs to me. What's your GSTI identity?",
+      "inviteCopy": "This guy claims he's introverted but secretly ruthless 😂 Bro the introvert part is real. The ruthless part is not. Take GSTI — see what you find in the rubble 👇"
+    },
+    "p15": {
+      "name": "THE PROPHET",
+      "callsignLabel": "PROPHET",
+      "shortDesc": "My pulpit is the street. My followers were forgotten by the world.",
+      "profile": "Once a spiritual leader. Now a street revolutionary. His sermons still echo — but now they gather the forgotten, the discarded, and forge them into brothers who'd bleed for the same faith. When the moment comes, he's the first to step into the fire. Bets his life on his conviction. Never abandons a follower. Never wavers in what he believes.",
+      "shareCopy": "I'm THE PROPHET ✝️ My pulpit is the street. My followers are the ones the world forgot. I don't save souls — I light them on fire. What's your GSTI identity?",
+      "inviteCopy": "This guy on the mic thinks he's a prophet 😂 Bro the last group you tried to organize had three people and one bailed. Take GSTI — find your real disciples 👇"
+    },
+    "p16": {
+      "name": "THE TRIGGER",
+      "callsignLabel": "TRIGGER-7",
+      "shortDesc": "I'm not crazy. I just drew the safety line further out than you did.",
+      "profile": "A walking powder keg. A woman with an assault rifle and a temper — but every bullet lands right on the red line of risk. She never waits for orders. Always the first into the storm of gunfire, cracking the enemy open with pure firepower to make room for her crew. What looks like madness to others is a razor-thin balance in her hands. Rules break. Victory doesn't.",
+      "shareCopy": "I'm THE TRIGGER 🧨 I'm not crazy — I just drew your 'safety line' further out than you did. By the time the bullet leaves the chamber, I've already done the math. What's your GSTI identity?",
+      "inviteCopy": "This guy gets fired up and says he's 'about to blow' 😂 Bro that's called a mood swing, not a bomb. Take GSTI — see how big you can actually blow up 👇"
+    }
+  }
+}
