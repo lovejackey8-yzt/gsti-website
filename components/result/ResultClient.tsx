@@ -267,7 +267,7 @@ export default function ResultClient({
         {/* 分享区 */}
         <div className="mt-8 border-t border-neon-pink/25 pt-6">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
-            <div>
+            <div data-capture-hide>
               <p className="mb-1 font-display text-2xl tracking-widest text-white md:text-3xl">
                 {t('shareTitle')}
               </p>
@@ -280,7 +280,7 @@ export default function ResultClient({
         </div>
 
         {/* 底部行 · 预注册 CTA */}
-        <div className="mt-8 border-t border-neon-pink/20 pt-6">
+        <div className="mt-8 border-t border-neon-pink/20 pt-6" data-capture-hide>
           <div className="flex flex-col items-center gap-4">
             <a
               href="https://www.gangstarmiragecity.com/pre-register/eeu/"

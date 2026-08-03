@@ -54,12 +54,36 @@ export function ShareBar({ shareCopy, url, captureTargetId }: ShareBarProps) {
 
     setDownloading(true);
     setHint(t('shareDownloadProcessing'));
+
+    // 收集需要临时隐藏/调整的节点，截图完恢复
+    const hiddenNodes: Array<{ el: HTMLElement; prevDisplay: string; prevVisibility: string }> = [];
+    // 隐藏 ShareBar（分享按钮不出现在截图里）+ 所有 data-capture-hide 节点（比如 toast）
+    const nodesToHide = [
+      ...Array.from(target.querySelectorAll<HTMLElement>('[data-capture-hide]')),
+      ...Array.from(target.querySelectorAll<HTMLElement>('[data-share-bar]')),
+    ];
+    nodesToHide.forEach((el) => {
+      hiddenNodes.push({ el, prevDisplay: el.style.display, prevVisibility: el.style.visibility });
+      el.style.display = 'none';
+    });
+
+    // 移动端强制固定桌面宽度，避免 md:响应式在窄容器下折行/换行
+    const prevWidth = target.style.width;
+    const prevMaxWidth = target.style.maxWidth;
+    const wasMobile = window.innerWidth < 900;
+    if (wasMobile) {
+      target.style.width = '960px';
+      target.style.maxWidth = '960px';
+    }
+
+    // 等两帧让样式生效
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+
     try {
-      // 动态 import 避免影响首屏 bundle 大小
       const { toPng } = await import('html-to-image');
       const dataUrl = await toPng(target, {
         cacheBust: true,
-        pixelRatio: 2, // 2x 高清导出
+        pixelRatio: 2,
         backgroundColor: '#0A0F1A',
       });
       const link = document.createElement('a');
@@ -73,12 +97,19 @@ export function ShareBar({ shareCopy, url, captureTargetId }: ShareBarProps) {
       setHint(t('shareDownloadFailed'));
       setTimeout(() => setHint(null), 2500);
     } finally {
+      // 恢复所有临时改动
+      hiddenNodes.forEach(({ el, prevDisplay, prevVisibility }) => {
+        el.style.display = prevDisplay;
+        el.style.visibility = prevVisibility;
+      });
+      target.style.width = prevWidth;
+      target.style.maxWidth = prevMaxWidth;
       setDownloading(false);
     }
   };
 
   return (
-    <div className="relative">
+    <div className="relative" data-share-bar>
       <div className="flex flex-wrap items-center gap-3">
         {/* 主按钮：LEAK MY FILE · 复制文案+URL */}
         <button
@@ -166,6 +197,7 @@ export function ShareBar({ shareCopy, url, captureTargetId }: ShareBarProps) {
         <div
           role="status"
           aria-live="polite"
+          data-capture-hide
           className="pointer-events-none absolute -top-12 left-0 border border-neon-cyan/40 bg-night-panel/95 px-3 py-2 font-terminal text-[10px] uppercase tracking-widest text-neon-cyan shadow-neon-cyan backdrop-blur-md"
         >
           <span className="mr-2 text-neon-pink">▶</span>
