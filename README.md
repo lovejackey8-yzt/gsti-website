@@ -1,6 +1,6 @@
 # GSTI · Criminal Personality Identification System
 
-A GTA-inspired one-time marketing microsite. Users don't fill in a personality test — the city identifies who they are.
+A GSTM-inspired one-time marketing microsite. Users don't fill in a personality test — the city identifies who they are.
 
 Built with Next.js 15 + TypeScript + Tailwind CSS + Framer Motion + shadcn/ui + next-intl.
 
