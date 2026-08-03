@@ -37,7 +37,7 @@ export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
     setLoading(true);
     setErr('');
     try {
-      const r = await fetch('/api/admin/stats', { cache: 'no-store' });
+      const r = await fetch('/api/admin/stats', { cache: 'no-store', credentials: 'same-origin' });
       if (!r.ok) {
         setErr('Session expired.');
         onLogout();

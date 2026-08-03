@@ -12,7 +12,7 @@ export default function AdminGate() {
 
   const probe = async () => {
     try {
-      const r = await fetch('/api/admin/stats', { cache: 'no-store' });
+      const r = await fetch('/api/admin/stats', { cache: 'no-store', credentials: 'same-origin' });
       setStatus(r.ok ? 'in' : 'need-login');
     } catch {
       setStatus('need-login');
@@ -34,7 +34,7 @@ export default function AdminGate() {
   }
 
   if (status === 'need-login') {
-    return <LoginForm onSuccess={probe} />;
+    return <LoginForm onSuccess={() => setStatus('in')} />;
   }
 
   return <AdminDashboard onLogout={() => setStatus('need-login')} />;
@@ -53,9 +53,12 @@ function LoginForm({ onSuccess }: { onSuccess: () => void }) {
       const r = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
         body: JSON.stringify({ password: pwd }),
       });
       if (r.ok) {
+        // 登录成功直接进 dashboard，不再二次 probe
+        // 避免 cookie 在某些环境下需要一次跳转才生效的问题
         onSuccess();
       } else {
         setErr('Not Found');
