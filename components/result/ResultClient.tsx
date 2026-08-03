@@ -231,11 +231,13 @@ export default function ResultClient() {
           <ShareBar shareCopy={shareCopy} url={url} />
         </div>
 
-        {/* 底部行 */}
+        {/* 底部行 · 预注册 CTA */}
         <div className="mt-8 border-t border-neon-pink/20 pt-6">
           <div className="flex flex-col items-center gap-4">
             <a
-              href="#"
+              href="https://www.gangstarmiragecity.com/pre-register/eeu/"
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 'group inline-flex items-center gap-3 border border-neon-yellow/60 bg-night-panel/40 px-5 py-2.5 font-terminal text-[11px] uppercase tracking-widest text-neon-yellow transition-all hover:border-neon-yellow hover:bg-neon-yellow/10 hover:shadow-neon-yellow md:text-xs',
               )}
