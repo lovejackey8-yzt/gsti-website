@@ -129,6 +129,7 @@ export default function ResultClient({
       </motion.p>
 
       <motion.section
+        id="gsti-result-card"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -275,7 +276,7 @@ export default function ResultClient({
             <ConfidentialStamp />
           </div>
 
-          <ShareBar shareCopy={shareCopy} url={shareUrl} />
+          <ShareBar shareCopy={shareCopy} url={shareUrl} captureTargetId="gsti-result-card" />
         </div>
 
         {/* 底部行 · 预注册 CTA */}

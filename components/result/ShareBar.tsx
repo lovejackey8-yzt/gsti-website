@@ -2,26 +2,26 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Copy, Check, Send, MessageCircle, Instagram, Music } from 'lucide-react';
+import { Check, Send, MessageCircle, Instagram, Music, Download } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
 interface ShareBarProps {
   shareCopy: string;
   url: string;
+  /** DOM 元素 id · 用于下载档案图截图整块结果卡片 */
+  captureTargetId?: string;
 }
 
 /**
  * 分享按钮组：
  * - LEAK MY FILE 主按钮（复制文案+URL到剪贴板）
- * - X（Twitter）
- * - Telegram
- * - Instagram（引导 · 复制文案 + 打开 IG.com；IG 没有 web share URL）
- * - TikTok（引导 · 复制文案 + 打开 TT.com；TT 没有 web share URL）
- * - 复制链接
+ * - SAVE AS FILE 下载档案图按钮（html-to-image 把结果卡生成 PNG 下载）
+ * - X / Telegram / Instagram / TikTok 平台按钮
  */
-export function ShareBar({ shareCopy, url }: ShareBarProps) {
+export function ShareBar({ shareCopy, url, captureTargetId }: ShareBarProps) {
   const t = useTranslations('result');
   const [copied, setCopied] = useState(false);
+  const [downloading, setDownloading] = useState(false);
   const [hint, setHint] = useState<string | null>(null);
 
   const text = encodeURIComponent(shareCopy);
@@ -47,9 +47,40 @@ export function ShareBar({ shareCopy, url }: ShareBarProps) {
     window.open(openUrl, '_blank', 'noopener,noreferrer');
   };
 
+  const handleDownload = async () => {
+    if (!captureTargetId) return;
+    const target = document.getElementById(captureTargetId);
+    if (!target) return;
+
+    setDownloading(true);
+    setHint(t('shareDownloadProcessing'));
+    try {
+      // 动态 import 避免影响首屏 bundle 大小
+      const { toPng } = await import('html-to-image');
+      const dataUrl = await toPng(target, {
+        cacheBust: true,
+        pixelRatio: 2, // 2x 高清导出
+        backgroundColor: '#0A0F1A',
+      });
+      const link = document.createElement('a');
+      link.download = `GSTI-file-${Date.now()}.png`;
+      link.href = dataUrl;
+      link.click();
+      setHint(t('shareDownloadDone'));
+      setTimeout(() => setHint(null), 2500);
+    } catch (e) {
+      console.error('[ShareBar] download failed:', e);
+      setHint(t('shareDownloadFailed'));
+      setTimeout(() => setHint(null), 2500);
+    } finally {
+      setDownloading(false);
+    }
+  };
+
   return (
     <div className="relative">
       <div className="flex flex-wrap items-center gap-3">
+        {/* 主按钮：LEAK MY FILE · 复制文案+URL */}
         <button
           onClick={() => handleCopy(`${shareCopy} ${url}`)}
           className={cn(
@@ -59,6 +90,21 @@ export function ShareBar({ shareCopy, url }: ShareBarProps) {
           {copied ? <Check className="h-4 w-4" /> : <Send className="h-4 w-4" />}
           {copied ? 'COPIED' : t('shareCta')}
         </button>
+
+        {/* 下载档案图按钮 */}
+        {captureTargetId && (
+          <button
+            onClick={handleDownload}
+            disabled={downloading}
+            className={cn(
+              'group inline-flex items-center gap-2 border-2 border-neon-yellow bg-neon-yellow/10 px-4 py-2.5 font-terminal text-xs uppercase tracking-widest text-neon-yellow transition-all hover:bg-neon-yellow hover:text-night hover:shadow-neon-yellow disabled:opacity-40',
+            )}
+            aria-label={t('shareDownload')}
+          >
+            <Download className={cn('h-4 w-4', downloading && 'animate-pulse')} />
+            {downloading ? 'RENDERING...' : t('shareDownload')}
+          </button>
+        )}
 
         {/* X (Twitter) */}
         <a
@@ -113,18 +159,9 @@ export function ShareBar({ shareCopy, url }: ShareBarProps) {
           <Music className="h-4 w-4" />
           <span className="hidden sm:inline">TT</span>
         </button>
-
-        {/* Copy Link */}
-        <button
-          onClick={() => handleCopy(url)}
-          className="flex h-10 w-10 items-center justify-center border border-neon-pink/30 bg-night-panel/60 text-white/80 transition-all hover:border-neon-pink hover:text-neon-pink hover:shadow-neon-pink"
-          aria-label={t('shareCopy')}
-        >
-          <Copy className="h-4 w-4" />
-        </button>
       </div>
 
-      {/* toast · IG/TT 引导提示 */}
+      {/* toast · IG/TT/下载 引导提示 */}
       {hint && (
         <div
           role="status"
@@ -143,7 +180,7 @@ export function ShareBar({ shareCopy, url }: ShareBarProps) {
 function XIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden>
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      <path d="M18.244 2.25h3.308l-7.227 8.268.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
   );
 }

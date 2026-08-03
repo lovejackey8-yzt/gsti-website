@@ -6,8 +6,8 @@ import zhLocale from '@/locales/zh.json';
 const personalities = personalitiesData as Personality[];
 
 /**
- * 动态生成社媒分享缩略图 · 1200 × 630
- * 结构：左侧人物大图 + 右侧档案信息（编号 / 名字 / 星级 / 4 维数值）
+ * 动态生成社媒分享缩略图 · 1200× 630
+ * 结构：左侧人物大图 + 右侧档案信息（编号 / 名字 / 威胁星级 / 影响力评级 / 4 维数值）
  * Vercel 边缘节点缓存 · 首次生成 ~1s · 后续毫秒级
  */
 
@@ -57,9 +57,6 @@ export default async function OGImage({ params }: { params: { id: string; locale
     .toString()
     .padStart(3, '0')}`;
 
-  // Vercel 部署时可以用绝对 URL 引图，本地/边缘环境用相对
-  // 但 edge runtime 不支持文件系统 · 只能用 public URL
-  // 我们的 portrait 图在 public/portraits/ · Vercel 会自动 serve
   const origin = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : 'https://gsti-website-11bh.vercel.app';
@@ -80,24 +77,23 @@ export default async function OGImage({ params }: { params: { id: string; locale
         {/* 左侧 · 人物大图 */}
         <div
           style={{
-            width: 500,
+            width: 480,
             height: '100%',
             position: 'relative',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            borderRight: `2px solid ${PINK}`,
+            borderRight: `3px solid ${PINK}`,
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={portraitUrl}
-            width={500}
+            width={480}
             height={630}
             alt=""
             style={{ objectFit: 'cover', width: '100%', height: '100%' }}
           />
-          {/* 底部渐变遮罩 · 让底部字更清晰 */}
           <div
             style={{
               position: 'absolute',
@@ -115,12 +111,12 @@ export default async function OGImage({ params }: { params: { id: string; locale
               position: 'absolute',
               top: 30,
               left: 30,
-              padding: '6px 14px',
-              border: `2px solid ${PINK}`,
-              background: 'rgba(10,15,26,0.8)',
+              padding: '8px 18px',
+              border: `3px solid ${PINK}`,
+              background: 'rgba(10,15,26,0.85)',
               color: PINK,
-              fontSize: 20,
-              letterSpacing: 4,
+              fontSize: 26,
+              letterSpacing: 6,
               fontWeight: 900,
               display: 'flex',
             }}
@@ -134,13 +130,37 @@ export default async function OGImage({ params }: { params: { id: string; locale
               bottom: 30,
               left: 30,
               color: YELLOW,
-              fontSize: 16,
-              letterSpacing: 6,
+              fontSize: 18,
+              letterSpacing: 8,
               fontWeight: 700,
               display: 'flex',
             }}
           >
             CONFIDENTIAL
+          </div>
+          {/* CALLSIGN 覆在肖像底部中间 */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 60,
+              left: 30,
+              right: 30,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 4,
+              color: '#fff',
+            }}
+          >
+            <div
+              style={{
+                fontSize: 14,
+                letterSpacing: 6,
+                color: CYAN,
+                display: 'flex',
+              }}
+            >
+              CALLSIGN
+            </div>
           </div>
         </div>
 
@@ -148,48 +168,88 @@ export default async function OGImage({ params }: { params: { id: string; locale
         <div
           style={{
             flex: 1,
-            padding: '55px 60px',
+            padding: '40px 50px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
           }}
         >
-          {/* 顶部 · 编号 */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <div
-              style={{
-                color: CYAN,
-                fontSize: 18,
-                letterSpacing: 6,
-                fontWeight: 600,
-                display: 'flex',
-              }}
-            >
-              // FILE NO. {fileNo}
+          {/* 顶部 · 编号 + 影响力评级右上角 */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <div
+                style={{
+                  color: CYAN,
+                  fontSize: 16,
+                  letterSpacing: 6,
+                  fontWeight: 600,
+                  display: 'flex',
+                }}
+              >
+                // FILE NO. {fileNo}
+              </div>
+              <div
+                style={{
+                  color: '#fff',
+                  fontSize: 18,
+                  letterSpacing: 3,
+                  opacity: 0.55,
+                  display: 'flex',
+                }}
+              >
+                CITY DATABASE · ROOKLYN CITY
+              </div>
             </div>
+            {/* 影响力评级 · 大 S/A/B/C 章 */}
             <div
               style={{
-                color: '#fff',
-                fontSize: 20,
-                letterSpacing: 3,
-                opacity: 0.6,
                 display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 4,
               }}
             >
-              CITY DATABASE · ROOKLYN CITY
+              <div
+                style={{
+                  fontSize: 12,
+                  letterSpacing: 4,
+                  color: '#fff',
+                  opacity: 0.55,
+                  display: 'flex',
+                }}
+              >
+                INFLUENCE
+              </div>
+              <div
+                style={{
+                  width: 60,
+                  height: 60,
+                  border: `3px solid ${YELLOW}`,
+                  background: 'rgba(255,209,0,0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 40,
+                  fontWeight: 900,
+                  color: YELLOW,
+                  boxShadow: `0 0 40px ${YELLOW}66`,
+                }}
+              >
+                {p.influence}
+              </div>
             </div>
           </div>
 
-          {/* 中部 · CALLSIGN + 名字 */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          {/* 中部 · CALLSIGN + 名字 + 威胁星级 */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             <div
               style={{
                 color: PINK,
-                fontSize: 68,
+                fontSize: 64,
                 letterSpacing: 6,
                 fontWeight: 900,
                 lineHeight: 1,
-                textShadow: `0 0 40px ${PINK}66`,
+                textShadow: `0 0 40px ${PINK}88`,
                 display: 'flex',
               }}
             >
@@ -198,7 +258,7 @@ export default async function OGImage({ params }: { params: { id: string; locale
             <div
               style={{
                 color: '#fff',
-                fontSize: 40,
+                fontSize: 36,
                 letterSpacing: 4,
                 fontWeight: 700,
                 display: 'flex',
@@ -206,26 +266,56 @@ export default async function OGImage({ params }: { params: { id: string; locale
             >
               {name}
             </div>
+            {/* 威胁星级 */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div
+                style={{
+                  fontSize: 14,
+                  letterSpacing: 4,
+                  color: '#fff',
+                  opacity: 0.6,
+                  display: 'flex',
+                }}
+              >
+                THREAT LEVEL
+              </div>
+              <div style={{ display: 'flex', gap: 4 }}>
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <span
+                    key={n}
+                    style={{
+                      color: n <= p.threatLevel ? PINK : 'rgba(255,255,255,0.15)',
+                      fontSize: 28,
+                      lineHeight: 1,
+                      textShadow: n <= p.threatLevel ? `0 0 12px ${PINK}` : 'none',
+                    }}
+                  >
+                    ★
+                  </span>
+                ))}
+              </div>
+            </div>
             <div
               style={{
                 color: '#fff',
-                fontSize: 22,
+                fontSize: 20,
                 opacity: 0.72,
-                lineHeight: 1.4,
+                lineHeight: 1.35,
                 display: 'flex',
-                maxWidth: 560,
+                maxWidth: 620,
+                fontStyle: 'italic',
               }}
             >
-              {shortDesc}
+              &ldquo;{shortDesc}&rdquo;
             </div>
           </div>
 
           {/* 底部 · 4 维数值 */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <StatRow label="冲动 IMPULSE" value={s.impulse} color={PINK} />
-            <StatRow label="独行 LONE" value={s.lone} color={PURPLE} />
-            <StatRow label="叛逆 ROGUE" value={s.rogue} color={CYAN} />
-            <StatRow label="赌徒 HIGH-RISK" value={s.highrisk} color={YELLOW} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <StatRow label="IMPULSE 冲动" value={s.impulse} color={PINK} />
+            <StatRow label="LONE 独行" value={s.lone} color={PURPLE} />
+            <StatRow label="ROGUE 叛逆" value={s.rogue} color={CYAN} />
+            <StatRow label="HIGH-RISK 赌徒" value={s.highrisk} color={YELLOW} />
           </div>
 
           {/* 最底部 · CTA */}
@@ -235,13 +325,13 @@ export default async function OGImage({ params }: { params: { id: string; locale
               justifyContent: 'space-between',
               alignItems: 'center',
               borderTop: `1px solid ${PINK}44`,
-              paddingTop: 20,
+              paddingTop: 14,
             }}
           >
             <div
               style={{
                 color: '#fff',
-                fontSize: 20,
+                fontSize: 18,
                 letterSpacing: 3,
                 fontWeight: 600,
                 display: 'flex',
@@ -252,7 +342,7 @@ export default async function OGImage({ params }: { params: { id: string; locale
             <div
               style={{
                 color: YELLOW,
-                fontSize: 18,
+                fontSize: 16,
                 letterSpacing: 4,
                 fontWeight: 700,
                 display: 'flex',
@@ -270,14 +360,14 @@ export default async function OGImage({ params }: { params: { id: string; locale
 
 function StatRow({ label, value, color }: { label: string; value: number; color: string }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
       <div
         style={{
           width: 180,
-          fontSize: 16,
-          letterSpacing: 3,
+          fontSize: 14,
+          letterSpacing: 2,
           color: '#fff',
-          opacity: 0.8,
+          opacity: 0.85,
           display: 'flex',
         }}
       >
@@ -286,7 +376,7 @@ function StatRow({ label, value, color }: { label: string; value: number; color:
       <div
         style={{
           flex: 1,
-          height: 12,
+          height: 10,
           background: 'rgba(255,255,255,0.08)',
           display: 'flex',
           position: 'relative',
@@ -304,8 +394,8 @@ function StatRow({ label, value, color }: { label: string; value: number; color:
       </div>
       <div
         style={{
-          width: 60,
-          fontSize: 20,
+          width: 50,
+          fontSize: 18,
           fontWeight: 700,
           color,
           textAlign: 'right',
