@@ -2,10 +2,10 @@ import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
 
 /**
- *支持的 locale 列表。
- * 首发 zh + en，俄语翻译到位后加进来即可。
+ * 支持的 locale 列表。
+ * 三语上线：中文 · 英文 · 俄文（主市场 EEU）
  */
-export const locales = ['zh', 'en'] as const;
+export const locales = ['zh', 'en', 'ru'] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'zh';
 
